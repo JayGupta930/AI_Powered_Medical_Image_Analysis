@@ -1,0 +1,269 @@
+.hero-container {
+    position: relative;
+    overflow: hidden;
+    background: black;
+}
+
+.model-section {
+    margin-right: -99vh;
+    margin-top: 20vh;
+}
+
+.hero-content {
+    margin-bottom: 9rem;
+    padding: 0 1.5rem;
+}
+
+.hero-inner {
+    height: 64.7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.text-section {
+    margin-top: -20vh;
+    margin-left: 4%;
+    position: relative;
+}
+
+.heading-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.heading-bar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.line {
+    margin-top: 100px;
+    height: 4px;
+    width: 64px;
+    background: #0ea5e9;
+    margin-right: 1rem;
+}
+
+.heading-bar p {
+    margin-top: 113px;
+    color: #0ea5e9;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+}
+
+.hero-heading {
+    text-align: left;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hero-heading.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.glow {
+    color: #0ea5e9;
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.7);
+}
+
+.hero-subtext {
+    text-align: left;
+    font-weight: 500;
+    max-width: 35rem;
+    color: white;
+    font-size: 1.125rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hero-subtext.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hero-buttons.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-primary {
+    padding: 0.75rem 2rem;
+    background: #0ea5e9;
+    color: black;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(14, 165, 233, 0.7);
+    animation: pulse 2s infinite;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #38bdf8;
+}
+
+.btn-secondary {
+    padding: 0.75rem 2rem;
+    border: 2px solid #0ea5e9;
+    color: #0ea5e9;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(230, 230, 230, 0) 0%, rgba(230, 230, 230, 0.6) 50%, rgba(230, 230, 230, 0) 100%);
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    animation: shimmer 3s infinite;
+    opacity: 0.1;
+}
+
+.tooltip-preview {
+    margin-left: -25vh;
+    height: 5rem;
+    margin-top: 6rem;
+}
+
+.model-section {
+    position: absolute;
+    top: -4rem;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.model-section.visible {
+    opacity: 1;
+}
+
+.model-bg {
+    position: absolute;
+    width: 10rem;
+    height: 6rem;
+    background: black;
+    z-index: 50;
+    right: 0;
+    bottom: 0;
+}
+
+.model-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(34, 197, 94, 0) 0%, rgba(34, 197, 94, 0.05) 50%, rgba(34, 197, 94, 0) 100%);
+    border-radius: 50%;
+    filter: blur(50px);
+}
+
+.model-viewer {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .model-viewer {
+        display: block;
+    }
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.bottom-line {
+    height: 4px;
+    width: 64px;
+    background: #22c55e;
+}
+
+/* Animations */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(14, 165, 233, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
