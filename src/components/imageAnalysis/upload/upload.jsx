@@ -4,6 +4,7 @@ import './upload.css'
 const Upload = () => {
   const [image, setImage] = useState(null)
   const [isDragging, setIsDragging] = useState(false)
+  const [diagnosis, setDiagnosis] = useState(null)
 
   const handleDrag = (e) => {
     e.preventDefault()
@@ -40,6 +41,28 @@ const Upload = () => {
     }
   }
 
+  const handleAnalyze = () => {
+    // Simulated diagnosis response - in a real application, this would come from an API
+    const diagnosisResponse = {
+      condition: "Potential Pneumonia Detected",
+      confidence: "85%",
+      findings: [
+        "Increased opacity in lower right lung field",
+        "Slight pleural effusion",
+        "No visible bone abnormalities"
+      ],
+      recommendations: [
+        "Further clinical correlation recommended",
+        "Consider CT scan for detailed evaluation",
+        "Follow-up in 2 weeks"
+      ],
+      severity: "Moderate",
+      additionalNotes: "Patient should be monitored for respiratory symptoms"
+    };
+    
+    setDiagnosis(diagnosisResponse);
+  };
+
   return (
     <div className="upload-container">
       <div className="upload-box">
@@ -71,7 +94,39 @@ const Upload = () => {
           )}
         </div>
         {image && (
-          <button className="analyze-btn">Analyze Image</button>
+          <button className="analyze-btn" onClick={handleAnalyze}>Analyze Image</button>
+        )}
+
+        {diagnosis && (
+          <div className="diagnosis-section">
+            <h2>Diagnosis Results</h2>
+            <div className="diagnosis-header">
+              <span className="condition">{diagnosis.condition}</span>
+              <span className="confidence">Confidence: {diagnosis.confidence}</span>
+              <span className="severity">Severity: {diagnosis.severity}</span>
+            </div>
+            
+            <div className="diagnosis-details">
+              <h3>Key Findings:</h3>
+              <ul>
+                {diagnosis.findings.map((finding, index) => (
+                  <li key={`finding-${index}`}>{finding}</li>
+                ))}
+              </ul>
+
+              <h3>Recommendations:</h3>
+              <ul>
+                {diagnosis.recommendations.map((rec, index) => (
+                  <li key={`rec-${index}`}>{rec}</li>
+                ))}
+              </ul>
+
+              <div className="additional-notes">
+                <h3>Additional Notes:</h3>
+                <p>{diagnosis.additionalNotes}</p>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
